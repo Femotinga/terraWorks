@@ -4,7 +4,7 @@ data "aws_ip_ranges" "eu_west_ip_range" {
 }
 
 resource "aws_security_group" "sg-custom_eu_west" {
-    name        = "sg-custom_eu_west"
+    name        = "secgroup-custom_eu_west"
     description = "Example security group"
     #vpc_id     = aws_vpc.custom_vpc.id
 
