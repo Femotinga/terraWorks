@@ -20,12 +20,14 @@ resource "aws_instance" "MyFirstInstance" {
   availability_zone = element(data.aws_availability_zones.availability.names, 1)
 
   provisioner "local-exec" {
-    command = "echo aws_instance.MyFirstInstance.private_ip >> my_private_ips.txt"
+    #command = "echo aws_instance.MyFirstInstance.private_ip >> my_private_ips.txt"
+    command = "echo ${self.private_ip} >> my_private_ips.txt"
   }
   tags = {
     Name = "custom_instance"
   }
-
+   
+    depends_on =[aws_instance.MyFirstInstance]
 }
 
   output "public_ip" {
